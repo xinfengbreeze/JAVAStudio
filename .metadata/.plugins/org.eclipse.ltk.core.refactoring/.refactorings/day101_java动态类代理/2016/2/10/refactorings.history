@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.yuan.com.TestClass&apos; to &apos;TestProxy&apos;&#x0D;&#x0A;- Original project: &apos;day101_java动态类代理&apos;&#x0D;&#x0A;- Original element: &apos;com.yuan.com.TestClass&apos;&#x0D;&#x0A;- Renamed element: &apos;com.yuan.com.TestProxy&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;TestClass&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;com.yuan.com{TestClass.java[TestClass" matchStrategy="1" name="TestProxy" qualified="false" references="true" similarDeclarations="false" stamp="1456647379556" textual="false" version="1.0"/>
+</session>

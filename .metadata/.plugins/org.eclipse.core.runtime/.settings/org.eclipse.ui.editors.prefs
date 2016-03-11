@@ -1,0 +1,6 @@
+AbstractTextEditor.Color.Background=0,0,0
+bookmarkIndicationColor=255,0,0
+eclipse.preferences.version=1
+org.eclipse.cdt.ui.overrideIndicatorColor=255,0,0
+overviewRuler_migration=migrated_3.1
+spellingEngine=org.eclipse.jdt.internal.ui.text.spelling.DefaultSpellingEngine

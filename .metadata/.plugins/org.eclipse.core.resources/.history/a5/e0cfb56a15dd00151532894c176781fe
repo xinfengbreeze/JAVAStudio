@@ -1,0 +1,15 @@
+
+public class TestPrintClassLoader {
+	
+	public void sayHello(){
+		System.out.println("ÄãºÃ£¡£¡£¡");
+	}
+  public static void main(String[] args){
+	  ClassLoader loader  = TestPrintClassLoader.class.getClassLoader();
+	  while(loader !=null){
+		   System.out.println(loader.toString());
+		   loader  = loader.getParent();
+	  }
+	 
+  }
+}

@@ -1,0 +1,26 @@
+package com.itcast.www;
+
+import java.util.Date;
+
+public class Test {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		testDate();
+
+	}
+
+	public static void testDate(){
+		//日期类 要记住的方法就是  两个构造方法     和 getTime()  和 setTime()方法
+		Date d  =new Date();  // 不传入参数就是获得系统单签的时间
+		Date d1 = new Date(100000);   //就是1970-1-1-0    加上这里的毫秒数
+		System.out.println(d);
+		System.out.println(d1);
+		
+		d1.setTime(20000);
+		System.out.println(  d1.getTime());
+	}
+
+}

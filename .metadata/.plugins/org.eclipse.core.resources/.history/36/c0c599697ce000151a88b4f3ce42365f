@@ -1,0 +1,10 @@
+package com.yuan;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+
+@Retention(RetentionPolicy.RUNTIME)
+public @interface MTest {
+		String value() default "hello world";
+		
+}

@@ -1,0 +1,27 @@
+package com.yuan.com;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+
+// 上一个例子中我们那个类  只能代理 Collection类   现在我们想代理任何一个传入的类
+public class TestProxy1 {
+	public static void main(String[] args){
+		Advice advice  = new Advice() {
+			public void doBefore() {
+				System.out.println("方法开始执行，统计时间开始.....");
+			}
+			public void doAfter() {
+				System.out.println("方法执行结束，统计时间结束.....");
+			}
+		};
+		 col = TestProxy1.getProxyObject(Object object, advice);
+		
+		
+	}
+	
+	
+
+
+}

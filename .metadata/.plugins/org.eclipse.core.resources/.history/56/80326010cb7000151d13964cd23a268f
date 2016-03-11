@@ -1,0 +1,5 @@
+package om.itcast.com;
+//  利用   LinkedList    来 实现栈的功能
+public class MyStack {
+		
+}

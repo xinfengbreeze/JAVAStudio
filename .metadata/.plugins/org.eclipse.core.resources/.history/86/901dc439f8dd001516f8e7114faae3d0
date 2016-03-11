@@ -1,0 +1,6 @@
+package com.yuan.com;
+
+public interface Advice {
+  public abstract void doBefore();
+  public abstract void  doAfter();
+}

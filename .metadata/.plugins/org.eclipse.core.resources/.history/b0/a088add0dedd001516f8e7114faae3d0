@@ -1,0 +1,32 @@
+package com.yuan.com;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class TestClass {
+public static void main(String[] args) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+		//Class  clazz  = Proxy.getProxyClass(Collection.class.getClassLoader(),new Class[]{ Collection.class});
+		
+		InvocationHandler  handler = new InvocationHandler(){
+			ArrayList list = new ArrayList();
+			public Object invoke(Object proxy, Method method, Object[] args)
+					throws Throwable {
+				System.out.println("InvocationHandler的invoke方法被调用了");
+			method.invoke(proxy, args);
+				return null;
+			}
+			
+		};
+	/*	Constructor constructor = clazz.getConstructor(new Class[]{handler.getClass()});
+		Collection col = (Collection) constructor.newInstance(new Object[]{handler});*/
+		Collection  col =(Collection) Proxy.newProxyInstance(Collection.class.getClassLoader()
+				,new Class[]{Collection.class}, 
+				handler);
+		col.clear();
+}
+}

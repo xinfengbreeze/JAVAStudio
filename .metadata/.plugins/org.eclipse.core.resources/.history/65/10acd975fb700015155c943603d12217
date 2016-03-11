@@ -1,0 +1,5 @@
+package com.itcast.www;
+
+public interface TestInterface<T> {
+		public   void  show(T t);
+}

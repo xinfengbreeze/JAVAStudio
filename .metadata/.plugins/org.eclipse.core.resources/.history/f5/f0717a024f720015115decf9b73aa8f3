@@ -1,0 +1,57 @@
+package com.itcast.com;
+// 异常处理是  一门语言是否成熟的重要标准
+// java的异常的优点  可以使程序更加健壮安全                但是处理异常会降低  运行效率
+
+//  Throwable  是异常的超类      
+//   ----Error   错误       比如虚拟机崩溃    系统崩溃等
+//   ----Exception  异常     有我们的程序导致的       它包含     编译期异常 （checked ）    和  运行期异常（RuntimeExcetpion）
+// 编译期异常       必须处理不然  无法通过编译        这就是一个思想      （没有完善错误处理的代码不能被运行）
+// 运行期异常        可以不处理     可以通过编译运行      但是运行有可能出错  
+
+
+// 异常的----产生和抛出----   1、程序出错 由系统自动产生   异常对象并抛出    2、有程序员自己创建异常对象并用throw抛出
+// 异常的----捕获和处理----   1、运行异常没有手动捕获   有虚拟机自动捕获并处理 
+//						 2、用try....catch...捕获处理
+//						 3、 用throws抛出有调用者  处理
+
+
+public class Test01ExceptionFengLei {
+
+	public static void main(String[] args) {
+		testRuntimeException3();
+	}
+	
+	//JVM自动处理  RuntimeException
+	public  static void testRuntimeException(){
+	//这里或产生 ArithmaticExcetion,他是RuntimeException的子类     可以不处理一样可以编译运行
+	// 产生一样 会由JVM自动处理     1、 打印异常追踪栈中的信息到标准错误输出   2、立即停止程序运行
+		int a= 100;  
+		a = 100/0;			//java.lang.ArithmeticException: / by zero
+		System.out.println(a);
+	}
+	
+	// 手动处理  RuntimeException    用try...catch
+	// 当try中的代码出现异常    try中那句以后的代码都将不执行了    直接跳到 与异常匹配的catch中去执行
+	// 执行完catch代码块以后 继续往下执行  
+	// 程序不会因为异常而停止
+	public static void testRuntimeException2(){
+		int a= 100;
+		try{
+		a = 100/0;	
+		System.out.println("没有出现异常");
+		}catch(ArithmeticException e){
+			System.out.println("出现异常了");
+		}
+		System.out.println(a);
+	}
+	
+	
+	// 通过  throws  抛出异常  让调用者处理            当然对于RuntimeException  可以不处理    也可以通过编译
+	// 
+	public static void testRuntimeException3(){
+		int a= 100;
+		a = 100/0;	
+		System.out.println(a);
+	}
+	
+}

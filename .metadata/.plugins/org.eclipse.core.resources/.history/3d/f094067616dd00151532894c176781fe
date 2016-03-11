@@ -1,0 +1,22 @@
+package cn.yuan.www;
+
+public class TestPrintClassLoader {
+	
+	public void sayHello(){
+		System.out.println("你好！！！");
+	}
+  public static void main(String[] args) throws ClassNotFoundException{
+	 
+/*	  ClassLoader loader  = TestPrintClassLoader.class.getClassLoader();
+	  while(loader !=null){
+		   System.out.println(loader.toString());
+		   loader  = loader.getParent();
+	  }*/
+	  Class clazz = Class.class.getClassLoader().loadClass("E:/JAVADEMO/day100_java类加载研究/bin/cn/yuan/www/TestPrintClassLoader.class");
+	  ClassLoader loader  =clazz.getClassLoader();
+	  while(loader !=null){
+		   System.out.println(loader.toString());
+		   loader  = loader.getParent();
+	  }
+  }
+}

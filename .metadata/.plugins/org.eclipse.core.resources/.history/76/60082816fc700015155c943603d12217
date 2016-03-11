@@ -1,0 +1,9 @@
+package com.itcast.www;
+
+public class TestFanXinInterface {
+
+	public static void main(String[] args) {
+	
+	}
+
+}

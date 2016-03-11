@@ -1,0 +1,13 @@
+package com.yuan;
+
+
+public class Test {
+	@MTest(value = "hello java",arr ={1,2,3})
+	public static void main(String[] args){
+		if(Test.class.isAnnotationPresent(MTest.class)){
+			MTest mtest = Test.class.getAnnotation(MTest.class);
+			System.out.println(mtest.value());
+			System.out.println(mtest.arr().length);
+		}
+	}
+}

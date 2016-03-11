@@ -1,0 +1,26 @@
+package om.itcast.com;
+
+import java.util.LinkedList;
+
+//  利用   LinkedList    来 实现栈的功能
+public class TestMyStack {
+		
+}
+class  MyStack{
+	LinkedList  list;
+	public  MyStack(){
+		list = new LinkedList();
+	}
+	public  void add(Object obj){
+		list.addFirst(obj);
+	}
+	
+	public Object  get(){
+		//return list.getFirst();
+		return  list.removeFirst();
+	}
+	
+	public  boolean  isEmpty(){
+		return list.isEmpty();
+	}
+}

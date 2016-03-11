@@ -1,0 +1,53 @@
+package com.yuan.com;
+
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class TestClass {
+public static void main(String[] args) throws NoSuchMethodException, SecurityException, InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException{
+		//Class  clazz  = Proxy.getProxyClass(Collection.class.getClassLoader(),new Class[]{ Collection.class});
+		
+		InvocationHandler  handler = new InvocationHandler(){
+			ArrayList list = new ArrayList();
+			public Object invoke(Object proxy, Method method, Object[] args)
+					throws Throwable {
+				System.out.println("InvocationHandler的invoke方法被调用了");
+				return method.invoke(list, args); 
+				// 调用  目标对象的对应的方法
+				//这就是代理的核心，  当你调用 代理的方法的时候   代理将要调用的方法 名称  和参数 传给 InvocationHandler的invoke的方法
+				//然后  在这里面我们再去处理      调用目标对象的对应方法， 需求比如统计方法执行的时间
+				//这里样我们就可以在调用方法的前后加上统计时间等操作，就可以实现统计时间，
+				
+			}
+			
+		};
+	/*	Constructor constructor = clazz.getConstructor(new Class[]{handler.getClass()});
+		Collection col = (Collection) constructor.newInstance(new Object[]{handler});*/
+		Collection  col =(Collection) Proxy.newProxyInstance(ArrayList.class.getClassLoader()
+				,new Class[]{ArrayList.class}, 
+				handler);
+		col.clear();
+		col.add("heloo");
+		col.add(" java");
+		col.add(" !!!");
+		System.out.println("集合内容："+ col.toString());
+}
+}
+/*
+客户给了我们一个编写好的类 ，现在有一个需求  就是在我用该类的时候，要 统计改类中每一个方法执行的时间
+方案一：修改客户的类方法，在每一个方法里面的开始和结尾加上时间，统计开始时间和结束时间（不好，客户很不高兴）
+方案二：写一个类继承客户的类，重写每一个方法，并且在每一个方法里面的开始和结尾加上时间，统计开始时间和结束时间（如果方法很多，我们会很累）
+方案三：使用动态代理，用Proxy类将客户的类，生成一个动态的代理类，这要我们调用动态代理类的方法，代理就会调用InvocationHandler的invoke方法
+		这样我们这要重写  invoke放就可以了。（简洁，方便，上档次）
+方法步骤：
+创建一个类的动态代理的对象:这里我们以 
+Collection  col =(Collection) Proxy.newProxyInstance(ArrayList.class.getClassLoader()
+				,new Class[]{Collection.class}, 
+				handler);
+
+
+*/
